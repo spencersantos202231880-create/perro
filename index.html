@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegance Nails | Manicura Profesional</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== RESET Y ESTILOS GLOBALES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff9fb;
+            color: #3a2c2f;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #b76e79;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: #6b4e4e;
+            font-weight: 700;
+        }
+
+        .logo span {
+            font-weight: 300;
+            color: #b76e79;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: #6b4e4e;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #b76e79;
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: #b76e79;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(rgba(255, 240, 245, 0.9), rgba(255, 240, 245, 0.8)), url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 2px solid #f8bbd0;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            color: #4a2e2e;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #5e3e3e;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #b76e79;
+            color: white;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            border: 2px solid #b76e79;
+            box-shadow: 0 8px 20px rgba(183, 110, 121, 0.3);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #b76e79;
+            box-shadow: 0 4px 12px rgba(183, 110, 121, 0.2);
+        }
+
+        /* ===== SECCIÓN CATÁLOGO ===== */
+        .catalogo {
+            padding: 80px 0;
+            background-color: #fff9fb;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #6b4e4e;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #b76e79;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #8a6e6e;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(183, 110, 121, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #fce4ec;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(183, 110, 121, 0.2);
+        }
+
+        .card-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.05));
+        }
+
+        .card-body {
+            padding: 22px 20px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body h3 {
+            font-size: 1.5rem;
+            color: #4a2e2e;
+            margin-bottom: 8px;
+        }
+
+        .card-body .desc {
+            color: #7a5e5e;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .precio {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b76e79;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+        }
+
+        .precio small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #8a6e6e;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card .btn-small {
+            display: inline-block;
+            background: #fce4ec;
+            color: #b76e79;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+            border: 1px solid #f8bbd0;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .card .btn-small:hover {
+            background: #b76e79;
+            color: white;
+            border-color: #b76e79;
+        }
+
+        /* ===== PROMOCIONES ===== */
+        .promociones {
+            background: linear-gradient(135deg, #fdf2f5 0%, #fce4ec 100%);
+            padding: 80px 0;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .promo-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(183, 110, 121, 0.08);
+            border: 2px dashed #f8bbd0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-card:hover {
+            border-color: #b76e79;
+            transform: scale(1.02);
+        }
+
+        .promo-icon {
+            font-size: 2.5rem;
+            color: #b76e79;
+            margin-bottom: 15px;
+        }
+
+        .promo-card h3 {
+            font-size: 1.6rem;
+            color: #6b4e4e;
+            margin-bottom: 10px;
+        }
+
+        .promo-card p {
+            color: #7a5e5e;
+            margin-bottom: 20px;
+        }
+
+        .promo-tag {
+            display: inline-block;
+            background: #b76e79;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #b76e79;
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #4a2e2e;
+            color: #f8e1e7;
+            padding: 50px 0 20px;
+            margin-top: 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #f8bbd0;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: #b76e79;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #e7d3d9;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #f8bbd0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: #f8e1e7;
+            font-size: 1.2rem;
+            transition: background 0.3s, color 0.3s;
+            margin-bottom: 0;
+        }
+
+        .social-icons a:hover {
+            background: #b76e79;
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #bda6ac;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.4rem;
+            }
+            .hero {
+                padding: 70px 0;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .btn {
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-spa"></i>
+                <h1>Elegance <span>Nails</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#promociones">Promociones</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h2>Manicura Profesional con Estilo</h2>
+            <p>Descubre nuestro catálogo de uñas acrílicas de alta calidad, diseños exclusivos y promociones pensadas para consentirte.</p>
+            <a href="#catalogo" class="btn">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section id="catalogo" class="catalogo">
+        <div class="container">
+            <h2 class="section-title">Catálogo de Uñas Acrílicas</h2>
+            <p class="section-subtitle">Diseños personalizados, materiales de primera y acabados impecables.</p>
+
+            <div class="cards-grid">
+                <!-- Tarjeta 1 -->
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-body">
+                        <h3>Clásico Francés</h3>
+                        <p class="desc">Uñas acrílicas con diseño francés tradicional, elegante y atemporal. Ideal para cualquier ocasión.</p>
+                        <div class="precio">$35 <small>USD</small></div>
+                        <span class="btn-small">Reservar cita</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-body">
+                        <h3>Efecto Espejo</h3>
+                        <p class="desc">Acabado metálico de alta reflectividad, disponible en tonos oro, plata y rosa. ¡Brillo garantizado!</p>
+                        <div class="precio">$45 <small>USD</small></div>
+                        <span class="btn-small">Reservar cita</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1607779097040-26e80aa78e66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-body">
+                        <h3>Encaje Artístico</h3>
+                        <p class="desc">Diseño de encaje pintado a mano con detalles de pedrería. Una obra de arte en tus manos.</p>
+                        <div class="precio">$55 <small>USD</small></div>
+                        <span class="btn-small">Reservar cita</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-body">
+                        <h3>Degradado Pastel</h3>
+                        <p class="desc">Transición suave de colores pastel, perfecto para un look fresco y juvenil. Incluye brillo.</p>
+                        <div class="precio">$40 <small>USD</small></div>
+                        <span class="btn-small">Reservar cita</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 5 -->
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1595629718593-82c9c2c7a5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-body">
+                        <h3>Mármol con Oro</h3>
+                        <p class="desc">Efecto mármol blanco con vetas doradas. Sofisticación y lujo en cada uña.</p>
+                        <div class="precio">$50 <small>USD</small></div>
+                        <span class="btn-small">Reservar cita</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 6 -->
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-body">
+                        <h3>Animal Print</h3>
+                        <p class="desc">Diseño de leopardo o cebra con acabado mate o brillante. Para un estilo atrevido y moderno.</p>
+                        <div class="precio">$42 <small>USD</small></div>
+                        <span class="btn-small">Reservar cita</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOCIONES -->
+    <section id="promociones" class="promociones">
+        <div class="container">
+            <h2 class="section-title">Promociones Especiales</h2>
+            <p class="section-subtitle">Aprovecha nuestras ofertas por tiempo limitado y consiente tus manos.</p>
+
+            <div class="promo-grid">
+                <!-- Promo 1 -->
+                <div class="promo-card">
+                    <div class="badge">-20%</div>
+                    <div class="promo-icon"><i class="fas fa-hand-sparkles"></i></div>
+                    <h3>Martes de Acrílico</h3>
+                    <p>Todos los martes, 20% de descuento en cualquier diseño de uñas acrílicas del catálogo.</p>
+                    <span class="promo-tag">Válido solo martes</span>
+                </div>
+
+                <!-- Promo 2 -->
+                <div class="promo-card">
+                    <div class="badge">2x1</div>
+                    <div class="promo-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Combo Amigas</h3>
+                    <p>Trae a una amiga y ambas reciben un 15% de descuento en su servicio. ¡La segunda cita es más divertida!</p>
+                    <span class="promo-tag">Todo el mes</span>
+                </div>
+
+                <!-- Promo 3 -->
+                <div class="promo-card">
+                    <div class="badge">GRATIS</div>
+                    <div class="promo-icon"><i class="fas fa-gift"></i></div>
+                    <h3>Diseño de Regalo</h3>
+                    <p>En tu primera visita, llévate un diseño de arte en una uña completamente gratis.</p>
+                    <span class="promo-tag">Primera vez</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACTO -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Elegance Nails</h4>
+                    <p>Tu estudio de manicura profesional. Realzamos la belleza de tus manos con diseños exclusivos y materiales de alta calidad.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Av. Principal 123, Ciudad</p>
+                    <p><i class="fas fa-phone-alt" style="margin-right: 8px;"></i> +1 234 567 890</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 8px;"></i> hola@elegancenails.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Horario</h4>
+                    <p>Lunes a Viernes: 9:00 - 20:00</p>
+                    <p>Sábados: 9:00 - 18:00</p>
+                    <p>Domingos: Cerrado</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Elegance Nails. Todos los derechos reservados. | Diseño profesional de uñas acrílicas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Pequeño script para smooth scroll (opcional) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
